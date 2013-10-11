@@ -1,7 +1,9 @@
 Binary to 7 Segment Display Driver
 ==========================
 
-VHDL code to take a binary input and convert to 7 segment display. Powered by a huge case statement for easy FPGA synthesis. The case is generated with a python script.
+VHDL code to take a binary input and convert to 7 segment display. Powered by a huge case statement for easy FPGA synthesis. The case is generated with a python script. The `STD_LOGIC_ARRAY`'s are formatted `ABCDEFG`, Which translates to the display:
+
+![7 Segment Display Layout](http://i.imgur.com/TiB0U5R.png)
 
 Case Generator Script
 ----------------------------
@@ -11,5 +13,5 @@ To switch where the output goes simply change `output_type` to either 'print' fo
 
 
 
--
+- - -
 Copyright (C) 2013 Cody Smith codysmithd@gmail.com. This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details: http://www.gnu.org/licenses/.
