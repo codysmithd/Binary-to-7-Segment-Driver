@@ -1,9 +1,16 @@
- Generates VHDL case statement for use like a lookup table in BCD conversion to 7-segment display
+# Generates VHDL case statement for use like a lookup table in BCD conversion to 7-segment display
 
-# Constants / Settings
+## Constants / Settings ##
 size_to_generate_to = 999
-getter_signal = "BCD_output"
+getter_signal = 'BCD_output'
 
+# values: print, file
+output_type = 'file'
+
+# if output type is file
+filename = 'test.txt'
+
+## CODE ##
 def generateCase(sizeTo, getter):
     maxSize = len(str(bin(sizeTo))[2:])
     for i in range(0,sizeTo+1):
@@ -32,11 +39,26 @@ def generateCase(sizeTo, getter):
                 BCD_result += "1111011"
         
         BCD_result = enforceSize(BCD_result, (len(str(sizeTo))*7))
-        print 'case \"' + enforceSize(str(bin(i))[2:],maxSize) + '\" => ' + getter + ' <= \"' + BCD_result + '\";'
+        output('case \"' + enforceSize(str(bin(i))[2:],maxSize) + '\" => ' + getter + ' <= \"' + BCD_result + '\";')
 
 def enforceSize(x, maxSize):
     if(len(x) < maxSize):
         return ("0" * (maxSize - len(x))) + x
     return x
 
+def output(string):
+    if output_type == 'print':
+        print string
+    elif output_type == 'file':
+        f.write(string)
+        f.write('\n')
+    else:
+        raise Exception('incorrect output type')
+
+if output_type == 'file':
+    f = open(filename, 'w')
+
 generateCase(size_to_generate_to, getter_signal)
+
+if output_type == 'file':
+    f.close()
