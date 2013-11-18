@@ -1,7 +1,7 @@
 # Generates VHDL case statement for use like a lookup table in BCD conversion to 7-segment display
 
 ## Constants / Settings ##
-size_to_generate_to = 999
+size_to_generate_to = 255
 getter_signal = 'BCD_output'
 
 # values: print, file
@@ -39,7 +39,7 @@ def generateCase(sizeTo, getter):
                 BCD_result += "1111011"
         
         BCD_result = enforceSize(BCD_result, (len(str(sizeTo))*7))
-        output('case \"' + enforceSize(str(bin(i))[2:],maxSize) + '\" => ' + getter + ' <= \"' + BCD_result + '\";')
+        output('\"' + BCD_result + '\" when input = \"' + enforceSize(str(bin(i))[2:],maxSize) + '\" else')
 
 def enforceSize(x, maxSize):
     if(len(x) < maxSize):
