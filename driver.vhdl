@@ -16,15 +16,10 @@ architecture Behavioral of seven_segment_decode is
   signal output_signal : STD_LOGIC_VECTOR(1 to 21);
   begin
   
-  process(clk) begin
-	  case input is
-	    -- 0 to 999 case here
-	  when others => output_signal <= "000000000000000000000";
-	  end case;
-	end process;
-	
-	hund_output <= output_signal(1 to 7);
-	tens_output <= output_signal(8 to 14);
-	hund_output <= output_signal(15 to 21);
+  output_signal <= --Generated Text Here
+  
+  hund_output <= output_signal(1 to 7);
+  tens_output <= output_signal(8 to 14);
+  hund_output <= output_signal(15 to 21);
 
 end Behavioral;
